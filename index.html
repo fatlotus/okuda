@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Graphing Sample</title>
+	<script src="okuda.js"></script>
+</head>
+<body>
+	<canvas id="graph" width="600" height="300"></canvas>
+	<script type="text/javascript">
+		var items = [ ];
+		for (var i = 0; i < 10000; i++) {
+			var x = Math.random() * 100;
+			var y = (Math.random() - 0.5) * (Math.random() - 0.5) * 2 + Math.sin(i / 100);
+			
+			items.push({ x: x, y: y });
+		};
+		
+		Okuda.graph({
+			data: items,
+			dependent: [
+				{
+					field: "y",
+					label: "Controls"
+				}
+			],
+			independent: [
+				{
+					field: "x",
+					label: "Measurement"
+				},
+			],
+			canvas: document.getElementsByTagName('canvas')[0],
+			title: "A Bunch of Random Numbers"
+		});
+	</script>
+</body>
+</html>
